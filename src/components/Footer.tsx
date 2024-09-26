@@ -8,7 +8,7 @@ export default async function Footer() {
   return (
     <footer>
       <Link href={`/`}>{settings.data.site_title}</Link>
-      <p>@{new Date().getFullYear()} {settings.data.site_title}</p>
+      <p>©{new Date().getFullYear()} {settings.data.site_title}</p>
       <ul>
         {settings.data.navigation.map(({ link, label }) => (
           <li key={label}>

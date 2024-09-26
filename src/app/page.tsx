@@ -1,5 +1,22 @@
-export default function page() {
-  return (
-    <div className="text-5xl font-bold font-display">page</div>
-  )
+import { Metadata } from "next";
+import { SliceZone } from "@prismicio/react";
+
+import { createClient } from "@/prismicio";
+// import { components } from "@/slices";
+
+export default async function Page() {
+  const client = createClient();
+  const page = await client.getSingle("homepage");
+  return <div className="text-blue-600">It Worked!!</div>
+  // return <SliceZone slices={page.data.slices} components={components} />;
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  const client = createClient();
+  const page = await client.getSingle("homepage");
+
+  return {
+    title: page.data.meta_title,
+    description: page.data.meta_description,
+  };
 }
