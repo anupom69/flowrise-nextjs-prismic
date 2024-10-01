@@ -12,6 +12,7 @@ import {
   CloverIcon,
   HourglassIcon,
 } from "@/components/Logos";
+
 /**
  * Props for `Features`.
  */
@@ -57,10 +58,15 @@ const Features = ({ slice }: FeaturesProps): JSX.Element => {
       data-slice-variation={slice.variation}
     >
       <PrismicRichText components={components} field={slice.primary.heading} />
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 max-w-5xl gap-x-8 gap-y-12 mx-auto sm:place-items-start place-items-center">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 max-w-5xl gap-x-8 gap-y-12 mx-auto  place-items-center">
         {slice.primary.features.map((item, index) => (
-          <div key={index} className="max-w-xs grid sm:place-items-start place-items-center">
-            {(item.icon as string) && <div className="mb-5">{icons[item.icon]}</div>}
+          <div
+            key={index}
+            className="max-w-xs grid sm:place-items-start place-items-center"
+          >
+            {(item.icon as string) && (
+              <div className="mb-5">{icons[item.icon]}</div>
+            )}
             <PrismicRichText components={components} field={item.title} />
             <PrismicRichText components={components} field={item.description} />
           </div>
