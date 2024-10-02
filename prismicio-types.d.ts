@@ -4,7 +4,146 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+type AboutPageDocumentDataSlicesSlice =
+  | CallToActionSlice
+  | TestimonialsSlice
+  | TextWithImageSlice;
+
+/**
+ * Content for About Page documents
+ */
+interface AboutPageDocumentData {
+  /**
+   * Slice Zone field in *About Page*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_page.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<AboutPageDocumentDataSlicesSlice> /**
+   * Meta Title field in *About Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: about_page.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *About Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: about_page.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *About Page*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_page.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * About Page document from Prismic
+ *
+ * - **API ID**: `about_page`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type AboutPageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<AboutPageDocumentData>,
+    "about_page",
+    Lang
+  >;
+
+type FeaturesPageDocumentDataSlicesSlice =
+  | CallToActionSlice
+  | TestimonialsSlice
+  | FeaturesSlice
+  | TextWithImageSlice;
+
+/**
+ * Content for Features Page documents
+ */
+interface FeaturesPageDocumentData {
+  /**
+   * Slice Zone field in *Features Page*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: features_page.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<FeaturesPageDocumentDataSlicesSlice> /**
+   * Meta Title field in *Features Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: features_page.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Features Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: features_page.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Features Page*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: features_page.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Features Page document from Prismic
+ *
+ * - **API ID**: `features_page`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type FeaturesPageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<FeaturesPageDocumentData>,
+    "features_page",
+    Lang
+  >;
+
 type HomepageDocumentDataSlicesSlice =
+  | CallToActionSlice
+  | TextWithImageSlice
   | TestimonialsSlice
   | FeaturesSlice
   | HeroSlice;
@@ -239,6 +378,8 @@ export type TestimonialDocument<Lang extends string = string> =
   >;
 
 export type AllDocumentTypes =
+  | AboutPageDocument
+  | FeaturesPageDocument
   | HomepageDocument
   | SettingsDocument
   | TestimonialDocument;
@@ -785,6 +926,12 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      AboutPageDocument,
+      AboutPageDocumentData,
+      AboutPageDocumentDataSlicesSlice,
+      FeaturesPageDocument,
+      FeaturesPageDocumentData,
+      FeaturesPageDocumentDataSlicesSlice,
       HomepageDocument,
       HomepageDocumentData,
       HomepageDocumentDataSlicesSlice,

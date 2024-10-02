@@ -1,18 +1,11 @@
 {
   "format": "page",
-  "id": "homepage",
-  "label": "Homepage",
+  "id": "about_page",
+  "label": "About Page",
   "repeatable": false,
   "status": true,
   "json": {
     "Main": {
-      "title": {
-        "type": "Text",
-        "config": {
-          "label": "Title",
-          "placeholder": ""
-        }
-      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
@@ -21,16 +14,10 @@
             "call_to_action": {
               "type": "SharedSlice"
             },
-            "text_with_image": {
-              "type": "SharedSlice"
-            },
             "testimonials": {
               "type": "SharedSlice"
             },
-            "features": {
-              "type": "SharedSlice"
-            },
-            "hero": {
+            "text_with_image": {
               "type": "SharedSlice"
             }
           }
