@@ -65,7 +65,9 @@ const Features = ({ slice }: FeaturesProps): JSX.Element => {
             className="max-w-xs grid sm:place-items-start place-items-center"
           >
             {(item.icon as string) && (
-              <div className="mb-5">{icons[item.icon]}</div>
+              <div className="mb-5">
+                {icons[item.icon as keyof typeof icons] || null}
+              </div>
             )}
             <PrismicRichText components={components} field={item.title} />
             <PrismicRichText components={components} field={item.description} />
