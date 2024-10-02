@@ -1,8 +1,10 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import { Nunito, Nunito_Sans } from "next/font/google";
 import clsx from "clsx";
-import { createClient } from "@/prismicio";
+import { createClient, repositoryName } from "@/prismicio";
 import "./globals.css";
+import { PrismicPreview } from "@prismicio/next";
+
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -42,6 +44,7 @@ export default function RootLayout({
         <div className="inset-0 fixed bg-gradient-to-tr from-emerald-50 to-cyan-50 z-[-1] opacity-45"/>
         {children}
         <Footer />
+        <PrismicPreview repositoryName={repositoryName}/>
       </body>
     </html>
   );
